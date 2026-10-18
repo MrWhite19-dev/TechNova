@@ -1,0 +1,760 @@
+:root {
+  --bg: #070707;
+  --bg-soft: #121012;
+  --panel: rgba(21, 14, 11, 0.92);
+  --panel-border: rgba(255, 156, 69, 0.2);
+  --orange: #ff7a18;
+  --orange-soft: #ff9a4d;
+  --chocolate: #4a2718;
+  --chocolate-soft: #8a5130;
+  --sand: #f2d4b4;
+  --text: #fff4e8;
+  --muted: rgba(255, 232, 212, 0.72);
+  --shadow: 0 28px 80px rgba(0, 0, 0, 0.48);
+  --radius-xl: 32px;
+  --radius-lg: 24px;
+  --radius-md: 18px;
+  --container: min(1160px, calc(100% - 2rem));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Manrope", "Trebuchet MS", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top, rgba(255, 122, 24, 0.12), transparent 36%),
+    radial-gradient(circle at bottom right, rgba(138, 81, 48, 0.18), transparent 28%),
+    linear-gradient(135deg, #050505 0%, #0e0a09 42%, #130a06 100%);
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(120deg, transparent 0%, rgba(255, 122, 24, 0.04) 36%, transparent 52%),
+    radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.03), transparent 12%);
+  pointer-events: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.site-shell {
+  width: var(--container);
+  margin: 0 auto;
+  position: relative;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  margin-top: 1rem;
+  padding: 1rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(9, 7, 7, 0.72);
+  backdrop-filter: blur(18px);
+  border-radius: 999px;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.28);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.brand img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 8px 30px rgba(255, 122, 24, 0.2);
+}
+
+.brand span,
+.brand small {
+  display: block;
+}
+
+.brand span {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.85rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.brand small {
+  color: var(--muted);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.nav a {
+  color: var(--muted);
+  font-size: 0.95rem;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.nav a:hover,
+.nav a:focus-visible {
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+.nav-cta {
+  padding: 0.82rem 1.2rem;
+  color: #180d08;
+  font-weight: 800;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--orange-soft), var(--sand));
+}
+
+.menu-toggle {
+  display: none;
+  width: 52px;
+  height: 52px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.35rem;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 20px;
+  height: 2px;
+  background: var(--text);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.hero,
+.collection-grid,
+.benefits,
+.offers,
+.showcase,
+.contact {
+  margin-top: 2.4rem;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  align-items: center;
+  min-height: calc(100vh - 140px);
+  padding: 2.4rem 0 2rem;
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  color: var(--orange-soft);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+.hero h1,
+.section-heading h2,
+.showcase-copy h2 {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.9rem, 7vw, 5.3rem);
+  line-height: 0.95;
+}
+
+.hero-text,
+.collection-card p,
+.benefit-list p,
+.offer-card li,
+.showcase-copy p,
+.contact-card p,
+.contact-card li {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.hero-copy {
+  max-width: 620px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 0 1.4rem;
+  border-radius: 999px;
+  font-weight: 800;
+  border: 1px solid transparent;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  color: #1a0d08;
+  background: linear-gradient(135deg, var(--orange), #ffc46d);
+  box-shadow: 0 12px 36px rgba(255, 122, 24, 0.28);
+}
+
+.btn-secondary {
+  border-color: rgba(255, 154, 77, 0.3);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.hero-stats {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.hero-stats li,
+.collection-card,
+.benefit-list article,
+.offer-card,
+.showcase-panel,
+.contact-form,
+.contact-card {
+  border: 1px solid var(--panel-border);
+  background: linear-gradient(180deg, rgba(24, 15, 12, 0.96), rgba(9, 7, 7, 0.94));
+  box-shadow: var(--shadow);
+}
+
+.hero-stats li {
+  min-width: 150px;
+  padding: 1rem 1.15rem;
+  border-radius: var(--radius-md);
+}
+
+.hero-stats strong {
+  display: block;
+  font-size: 1.55rem;
+}
+
+.hero-stats span {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.hero-visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 560px;
+}
+
+.glow-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 146, 70, 0.18);
+  filter: blur(0.5px);
+}
+
+.ring-one {
+  width: 420px;
+  height: 420px;
+  box-shadow: inset 0 0 70px rgba(255, 122, 24, 0.12), 0 0 60px rgba(255, 122, 24, 0.08);
+}
+
+.ring-two {
+  width: 520px;
+  height: 520px;
+  border-style: dashed;
+  opacity: 0.35;
+}
+
+.phone-stage {
+  position: relative;
+  width: min(100%, 450px);
+  height: 540px;
+}
+
+.phone-card {
+  position: absolute;
+  border-radius: 38px;
+  background: linear-gradient(165deg, #271510 0%, #120d0c 48%, #050505 100%);
+  border: 1px solid rgba(255, 180, 120, 0.15);
+  overflow: hidden;
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.5);
+}
+
+.phone-main {
+  inset: 20px 70px 20px 60px;
+  transform: rotate(-8deg);
+}
+
+.phone-side {
+  inset: 80px 20px 90px 170px;
+  transform: rotate(14deg);
+  opacity: 0.56;
+}
+
+.camera-block {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  width: 82px;
+  height: 118px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.06);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 12px;
+  gap: 10px;
+}
+
+.camera-block span {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffddc1, var(--orange) 48%, #1a0d08 80%);
+}
+
+.camera-block span:last-child {
+  grid-column: 1 / -1;
+}
+
+.phone-screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+  background:
+    linear-gradient(175deg, transparent 0%, rgba(255, 122, 24, 0.1) 55%, rgba(255, 206, 155, 0.16) 100%),
+    radial-gradient(circle at top right, rgba(255, 164, 84, 0.24), transparent 28%);
+}
+
+.screen-badge {
+  align-self: flex-start;
+  padding: 0.45rem 0.8rem;
+  margin-bottom: auto;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--sand);
+  font-size: 0.82rem;
+}
+
+.phone-screen h2 {
+  margin: 0.5rem 0 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2.2rem;
+}
+
+.phone-screen p {
+  margin: 0.55rem 0 0;
+  color: rgba(255, 244, 232, 0.8);
+}
+
+.collection-grid,
+.offer-grid,
+.contact-layout {
+  display: grid;
+  gap: 1.3rem;
+}
+
+.collection-grid {
+  grid-template-columns: 1.25fr 1fr 1fr 1fr;
+}
+
+.collection-card,
+.benefit-list article,
+.offer-card,
+.contact-form,
+.contact-card,
+.showcase-panel {
+  padding: 1.6rem;
+  border-radius: var(--radius-xl);
+}
+
+.collection-card h2,
+.showcase-copy h2 {
+  font-size: clamp(2.1rem, 4vw, 3.1rem);
+}
+
+.collection-card h3,
+.benefit-list h3,
+.offer-card h3,
+.contact-card h3 {
+  margin: 0.35rem 0 0.8rem;
+  font-size: 1.35rem;
+}
+
+.collection-card.featured {
+  background:
+    linear-gradient(150deg, rgba(255, 122, 24, 0.12), rgba(67, 33, 17, 0.9)),
+    linear-gradient(180deg, rgba(24, 15, 12, 0.96), rgba(9, 7, 7, 0.94));
+}
+
+.card-tag,
+.offer-top span {
+  color: var(--orange-soft);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.collection-card a,
+.offer-card a,
+.footer a {
+  color: var(--sand);
+  font-weight: 700;
+}
+
+.section-heading {
+  max-width: 760px;
+  margin-bottom: 1.5rem;
+}
+
+.section-heading h2 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+}
+
+.benefit-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.3rem;
+}
+
+.benefit-list span {
+  color: var(--orange-soft);
+  font-size: 2rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.offer-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.offer-card {
+  position: relative;
+}
+
+.offer-card.highlighted {
+  transform: translateY(-10px);
+  background:
+    linear-gradient(180deg, rgba(255, 122, 24, 0.18), rgba(9, 7, 7, 0.95)),
+    linear-gradient(180deg, rgba(24, 15, 12, 0.96), rgba(9, 7, 7, 0.94));
+}
+
+.offer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.offer-card h3 {
+  font-size: 2.4rem;
+  margin: 1rem 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.offer-card ul,
+.contact-card ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.showcase {
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+  gap: 1.4rem;
+  align-items: stretch;
+}
+
+.showcase-panel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  background:
+    linear-gradient(145deg, rgba(255, 122, 24, 0.11), rgba(26, 12, 8, 0.96)),
+    linear-gradient(180deg, rgba(24, 15, 12, 0.96), rgba(9, 7, 7, 0.94));
+}
+
+.mini-card {
+  padding: 1.4rem;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 180, 120, 0.14);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 200px;
+}
+
+.mini-card span {
+  color: var(--muted);
+}
+
+.mini-card strong {
+  margin-top: 0.5rem;
+  font-size: 1.7rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.contact-layout {
+  grid-template-columns: 1.2fr 0.8fr;
+}
+
+.contact-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.contact-form label {
+  display: grid;
+  gap: 0.55rem;
+  color: var(--sand);
+  font-size: 0.95rem;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  outline: none;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  border-color: rgba(255, 154, 77, 0.5);
+  box-shadow: 0 0 0 4px rgba(255, 122, 24, 0.08);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 2rem 0 3rem;
+  color: var(--muted);
+}
+
+.toast {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  padding: 1rem 1.2rem;
+  border-radius: 16px;
+  color: #1a0d08;
+  background: linear-gradient(135deg, var(--orange-soft), var(--sand));
+  font-weight: 800;
+  transform: translateY(140%);
+  transition: transform 0.3s ease;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  z-index: 40;
+}
+
+.toast.show {
+  transform: translateY(0);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1080px) {
+  .hero,
+  .showcase,
+  .contact-layout,
+  .collection-grid,
+  .benefit-list,
+  .offer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: 1.5rem;
+  }
+
+  .collection-grid,
+  .benefit-list,
+  .offer-grid,
+  .showcase-panel {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .collection-card.featured {
+    min-height: 260px;
+  }
+}
+
+@media (max-width: 820px) {
+  .topbar {
+    border-radius: 28px;
+    padding: 1rem;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  .nav {
+    position: absolute;
+    top: calc(100% + 0.8rem);
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    border-radius: 26px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(10, 8, 8, 0.96);
+    box-shadow: var(--shadow);
+    flex-direction: column;
+    align-items: stretch;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 0.28s ease, transform 0.28s ease;
+  }
+
+  .nav.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .nav-cta {
+    text-align: center;
+  }
+
+  .brand img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .phone-stage {
+    height: 460px;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-shell {
+    width: min(100% - 1rem, 100%);
+  }
+
+  .hero,
+  .collection-grid,
+  .benefits,
+  .offers,
+  .showcase,
+  .contact {
+    margin-top: 1.5rem;
+  }
+
+  .hero h1,
+  .section-heading h2,
+  .showcase-copy h2 {
+    line-height: 1;
+  }
+
+  .hero-actions,
+  .hero-stats,
+  .showcase-panel,
+  .collection-grid,
+  .benefit-list,
+  .offer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions {
+    display: grid;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .phone-stage {
+    height: 380px;
+  }
+
+  .phone-main {
+    inset: 20px 48px 10px 30px;
+  }
+
+  .phone-side {
+    inset: 70px 10px 60px 110px;
+  }
+
+  .mini-card {
+    min-height: 140px;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
